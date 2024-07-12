@@ -12,7 +12,7 @@ const b64ToParams = (data: string) => {
   return JSON.parse(decodeURIComponent(window.atob(data))) as object;
 };
 
-function UrlStringFilter() {
+function UrlUniqueStringFilter() {
   const [searchParams, setSearchParams] = useSearchParams(location.search);
   const handleChangeRadio = (keyFilter: string, value: string) => {
     const currentState = searchParams.get("filter");
@@ -141,4 +141,4 @@ function UrlStringFilter() {
   );
 }
 
-export { UrlStringFilter };
+export { UrlUniqueStringFilter };

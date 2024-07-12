@@ -12,6 +12,9 @@
   -moz-osx-font-smoothing: grayscale;
 
   margin: 0;
+
+  --app-navigation-height: 40px;
+  --app-navigation-link-background: transparent;
 }
 
 body {
@@ -23,10 +26,49 @@ body {
   box-sizing: border-box;
 }
 
+.app {
+  min-height: 100vh;
+}
+
+.navigation {
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  padding-left: 6px;
+  gap: 10px;
+}
+
+.navigation span {
+  color: #555;
+  font-weight: 600;
+}
+
+.navigation-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navigation-links a {
+  text-decoration: none;
+  border-radius: 4px;
+  color: blue;
+  padding: 2px 4px;
+  background-color: var(--app-navigation-link-background);
+}
+.navigation-links a:visited {
+  color: blue;
+}
+.navigation-links a:hover,
+.navigation-links--active {
+  --app-navigation-link-background: #e4d7ff;
+}
+
 .main {
   display: flex;
   flex: 1;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--app-navigation-height));
 }
 .main aside {
   width: 260px;

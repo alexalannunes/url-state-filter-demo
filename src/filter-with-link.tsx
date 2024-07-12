@@ -1,4 +1,4 @@
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import { HTMLProps } from "react";
 import { categories } from "./data";
@@ -55,6 +55,7 @@ function Checkbox({ name, filterKey, value, label }: RadioProps) {
 
 function LinkFilter() {
   const [searchParams] = useSearchParams(location.search);
+  const { pathname } = useLocation();
 
   return (
     <div className="main">
@@ -78,7 +79,7 @@ function LinkFilter() {
                         >
                           <Link
                             to={{
-                              pathname: "/",
+                              pathname: "",
                               search: url.toString(),
                             }}
                           >
@@ -121,7 +122,7 @@ function LinkFilter() {
                         >
                           <Link
                             to={{
-                              pathname: "/",
+                              pathname: pathname,
                               search: url.toString(),
                             }}
                           >
