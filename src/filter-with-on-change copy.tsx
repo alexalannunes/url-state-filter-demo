@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { categories } from "./data";
 import "./App.css";
+import { serializeParams } from "./utils";
 
 function OnChangeFilter() {
   const [searchParams, setSearchParams] = useSearchParams(location.search);
@@ -15,6 +16,8 @@ function OnChangeFilter() {
     const valuesKey = searchParams.get(keyFilter);
 
     let string = value;
+
+    // '-' is a array separator
 
     if (!!valuesKey) {
       const valuesRaw = valuesKey.split("-");
@@ -37,6 +40,8 @@ function OnChangeFilter() {
 
     setSearchParams({ ...current, [keyFilter]: string });
   };
+
+  const result = serializeParams(searchParams);
 
   return (
     <div className="main">
@@ -100,9 +105,7 @@ function OnChangeFilter() {
         })}
       </aside>
       <main>
-        <pre>
-          {JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}
-        </pre>
+        <pre>{JSON.stringify(result, null, 2)}</pre>
       </main>
     </div>
   );

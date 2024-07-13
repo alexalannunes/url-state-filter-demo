@@ -59,6 +59,8 @@ function UrlUniqueStringFilter() {
     setSearchParams({ filter: urlStateString });
   };
 
+  const result = b64ToParams(searchParams.get("filter") || "e30=");
+
   return (
     <div className="main">
       <aside>
@@ -133,9 +135,7 @@ function UrlUniqueStringFilter() {
         })}
       </aside>
       <main>
-        <pre>
-          {JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}
-        </pre>
+        <pre>{JSON.stringify(result, null, 2)}</pre>
       </main>
     </div>
   );

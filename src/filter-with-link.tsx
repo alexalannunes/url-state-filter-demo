@@ -2,6 +2,7 @@ import { useSearchParams, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import { HTMLProps } from "react";
 import { categories } from "./data";
+import { serializeParams } from "./utils";
 
 interface RadioProps extends HTMLProps<HTMLInputElement> {
   filterKey: string;
@@ -56,6 +57,8 @@ function Checkbox({ name, filterKey, value, label }: RadioProps) {
 function LinkFilter() {
   const [searchParams] = useSearchParams(location.search);
   const { pathname } = useLocation();
+
+  const result = serializeParams(searchParams);
 
   return (
     <div className="main">
@@ -141,9 +144,7 @@ function LinkFilter() {
         })}
       </aside>
       <main>
-        <pre>
-          {JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}
-        </pre>
+        <pre>{JSON.stringify(result, null, 2)}</pre>
       </main>
     </div>
   );
