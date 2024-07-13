@@ -14,8 +14,8 @@ https://github.com/user-attachments/assets/2e762df1-7d91-41b9-85ef-268f8a617898
 
 TODO
 
-[ ] Change content preview to display object filter result
-[x] Record video to display url state filter
+- [x] Change content preview to display object filter result
+- [ ] Record video to display url state filter
 
 
 
